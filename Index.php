@@ -36,10 +36,10 @@
                             class="fa-solid fa-futbol"></i> Games & Sports</a></li>
                 <li><a href="peace-corner.php" class="text-content hover:text-primary transition duration-300"><i
                             class="fa-solid fa-spa"></i> Peace Corner</a></li>
-                <li><a href="about-bd.php" class="text-content hover:text-primary transition duration-300"><i
-                            class="fa-solid fa-heart"></i> About BD</a></li>
-                <li><a href="contact.php" class="text-content hover:text-primary transition duration-300"><i
-                            class="fa-solid fa-envelope"></i> Contact</a></li>
+                <!-- <li><a href="about-bd.php" class="text-content hover:text-primary transition duration-300"><i
+                            class="fa-solid fa-heart"></i> About BD</a></li> -->
+                <!-- <li><a href="contact.php" class="text-content hover:text-primary transition duration-300"><i
+                            class="fa-solid fa-envelope"></i> Contact</a></li> -->
             </ul>
             <button id="mobile-menu-button" class="md:hidden focus:outline-none text-content hover:text-primary">
                 <i class="fa-solid fa-bars text-2xl"></i>
@@ -60,12 +60,8 @@
                 <li class="w-full text-center"><a href="peace-corner.php"
                         class="block py-2 px-4 text-content hover:bg-subtle hover:text-primary transition duration-300"><i
                             class="fa-solid fa-spa"></i> Peace Corner</a></li>
-                <li class="w-full text-center"><a href="about-bd.php"
-                        class="block py-2 px-4 text-content hover:bg-subtle hover:text-primary transition duration-300"><i
-                            class="fa-solid fa-heart"></i> About BD</a></li>
-                <li class="w-full text-center"><a href="contact.php"
-                        class="block py-2 px-4 text-content hover:bg-subtle hover:text-primary transition duration-300"><i
-                            class="fa-solid fa-envelope"></i> Contact</a></li>
+                <!-- <li class="w-full text-center"><a href="about-bd.php" class="block py-2 px-4 text-content hover:bg-subtle hover:text-primary transition duration-300"><i class="fa-solid fa-heart"></i> About BD</a></li> -->
+                <!-- <li class="w-full text-center"><a href="contact.php"class="block py-2 px-4 text-content hover:bg-subtle hover:text-primary transition duration-300"><iclass="fa-solid fa-envelope"></iclass=> Contact</a></li> -->
             </ul>
         </div>
     </header>
@@ -91,24 +87,6 @@
         <div id="interactive-map" class="w-full h-[500px] rounded-lg shadow-md"></div>
     </div>
 </section>
-
-    <!-- <section id="destinations" class="py-16 px-6 bg-subtle">
-        <div class="container mx-auto">
-            <h2 class="text-3xl font-semibold mb-8 text-center text-primary"><i
-                    class="fa-solid fa-map-location-dot mr-2"></i>Popular Destinations</h2>
-            <div id="map-placeholder" class="w-full rounded-lg flex items-center justify-center text-center p-4">
-                <p class="text-xl text-muted">
-                    Interactive Map Feature Coming Soon!<br>
-                    <span class="text-sm">(Explore Cox's Bazar, Sundarbans, Sylhet, Saint Martin's Island, and
-                        more!)</span>
-                    <br>
-                    <img src="https://placehold.co/800x400/e0f2f7/87ceeb?text=Map+of+Bangladesh+Destinations+(Placeholder)"
-                        alt="Map of Bangladesh Destinations Placeholder" class="mt-4 rounded-lg mx-auto shadow-md"
-                        style="max-width: 100%; height: auto;">
-                </p>
-            </div>
-        </div>
-    </section> -->
 
 
     <footer class="footer-profiles">

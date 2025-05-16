@@ -1,57 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Games & Sports - BanglaGram</title>
+    <title>Destinations - BanglaGram</title>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js" defer></script>
+
 </head>
-<body>
+
+<body >
     <nav class="navbar">
         <a href="Index.php">BanglaGram</a> |
         <a href="destinations.php">Destinations</a> |
         <a href="art-culture.php">Art & Culture</a> |
         <a href="games-sports.php">Games & Sports</a> |
         <a href="peace-corner.php">Peace Corner</a> |
-        <a href="about-bd.php">About BD</a>
-        <a href="contact.php">Contact</a>
+        <!-- <a href="about-bd.php">About BD</a> -->
+        <!-- <a href="contact.php">Contact</a> -->
     </nav>
+
     <main class="container">
-        <h1>Games & Sports</h1>
-        <p>Learn about traditional and modern games & sports in Bangladesh.</p>
-        <section id="games" class="py-16 px-6 bg-subtle">
-            <div class="container mx-auto text-center">
-                <h2 class="text-3xl font-semibold mb-8 text-primary"><i class="fa-solid fa-futbol mr-2"></i>Games & Sports</h2>
-                <p class="text-lg text-muted max-w-3xl mx-auto mb-8">
-                    From the nationwide passion for Cricket and Football to traditional games like Kabaddi (Ha-du-du) and Lathi Khela, sports are woven into the fabric of Bangladeshi life.
-                </p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                        <i class="fa-solid fa-baseball-bat-ball text-4xl text-accent mb-4"></i>
-                        <h3 class="text-xl font-semibold mb-2 text-content">Cricket Fever</h3>
-                        <p class="text-muted">The undisputed king of sports in Bangladesh, uniting millions.</p>
+        <h1 style="text-align: center;">Games & Sports</h1>
+        <p style="text-align: center;">Learn about traditional and modern games & sports in Bangladesh.</p>
+    </main>
+
+
+
+
+
+<!-- Modal toggle -->
+<button style="padding: 17px; width: 90px; border-radius: 10px; position: fixed; top: 90px; right: 10px; background-color: #8d83b4;" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="block text-white bg-blue-700" type="button">
+   +Add
+</button>
+
+<!-- Main modal -->
+<div id="authentication-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative p-4 w-full max-w-md max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow-sm dark:bg-white-700">
+            <!-- Modal header -->
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                    Destinations Details
+                </h3>
+                <button type="button" class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="authentication-modal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="p-4 md:p-5">
+                <?php
+                include 'connect.php';
+
+                if (!$conn) {
+                    echo '<p class="text-red-500">Database connection failed: ' . mysqli_connect_error() . '</p>';
+                    exit();
+                }
+
+
+
+
+                if (isset($_POST['submit'])) {
+                    // Check if a file was uploaded
+                    if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+                        $name = mysqli_real_escape_string($conn, $_POST['name']);
+                        $detail = mysqli_real_escape_string($conn, $_POST['detail']);
+                        $image_path = $_FILES['image']['name'];
+                        $tempname = $_FILES['image']['tmp_name'];
+                        $folder = 'images/' . $image_path;
+
+                        // Validate file type (e.g., allow only images)
+                        $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
+                        $file_type = mime_content_type($tempname);
+                        if (!in_array($file_type, $allowed_types)) {
+                            echo '<p class="text-red-500">Invalid file type. Only JPEG, PNG, and GIF are allowed.</p>';
+                        } else {
+                            // Ensure the images directory exists
+                            if (!is_dir('images')) {
+                                mkdir('images', 0755, true);
+                            }
+
+                            // Insert into database
+                            $sql = "INSERT INTO `games_sports` (`name`, `detail`, `image`) VALUES ('$name', '$detail', '$image_path')";
+                            $query = mysqli_query($conn, $sql);
+
+                            if ($query && move_uploaded_file($tempname, $folder)) {
+                                echo '<p class="text-green-500">Destination added successfully!</p>';
+                            } else {
+                                echo '<p class="text-red-500">Failed to add destination or upload image.</p>';
+                            }
+                        }
+                    } else {
+                        echo '<p class="text-red-500">No file uploaded or file upload error.</p>';
+                    }
+                }
+                ?>
+                
+
+                <form class="space-y-4" action="/banglagam/games-sports.php" method="post" enctype="multipart/form-data">
+                    <div>
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Name</label>
+                        <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Type your destination name" required />
                     </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                        <i class="fa-regular fa-futbol text-4xl text-accent mb-4"></i>
-                        <h3 class="text-xl font-semibold mb-2 text-content">Football Passion</h3>
-                        <p class="text-muted">A widely loved sport with passionate local rivalries.</p>
+                    <div>
+                        <label for="detail" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Details</label>
+                        <input type="text" name="detail" id="detail" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Details" required />
                     </div>
-                     <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                        <i class="fa-solid fa-people-arrows text-4xl text-accent mb-4"></i>
-                        <h3 class="text-xl font-semibold mb-2 text-content">Kabaddi (Ha-du-du)</h3>
-                        <p class="text-muted">The national sport, a thrilling game of tag and strength.</p>
+                    <div>
+                        <label for="image" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Upload Image</label>
+                        <input type="file" name="image" id="image" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" accept="image/*" required />
+                    </div>
+                    <button type="submit" name="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="destination-container">
+        <?php
+        $res = mysqli_query($conn, "SELECT name, detail, image FROM games_sports");
+        if (mysqli_num_rows($res) > 0) {
+            while ($row = mysqli_fetch_assoc($res)) {
+        ?>
+                <div class="destination-card">
+                    <div class="destination-pic">
+                        <img src="images/<?php echo htmlspecialchars($row['image']); ?>" alt="<?php echo htmlspecialchars($row['name']); ?>">
+                        <div class="overlay">
+                            <p><?php echo htmlspecialchars($row['detail']); ?></p>
+                        </div>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="text-lg font-semibold"><?php echo htmlspecialchars($row['name']); ?></h3>
                     </div>
                 </div>
-                <p class="mt-8 text-muted">More content on traditional games coming soon!</p>
-            </div>
-        </section>
-    </main>
+        <?php
+            }
+        } else {
+            echo '<p class="text-muted col-span-full text-center">No destinations found.</p>';
+        }
+        ?>
+    </div>
+</div>
+
+
+
+
     <footer>
         <section id="contact">
             <h2>Contact</h2>
             <p>Email: info@banglagram.com</p>
         </section>
     </footer>
+
+    <script src="./js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 </body>
+
 </html>

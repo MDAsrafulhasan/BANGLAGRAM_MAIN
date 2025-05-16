@@ -15,13 +15,14 @@ h1, h2, h3 {
 }
 
 .container {
-    max-width: 1000px;
+    max-width: 1400px;
     margin: 40px auto;
     background: #fff;
     padding: 32px;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(44,62,80,0.10);
 }
+
 
 nav.navbar {
     background: #fff;
@@ -285,4 +286,136 @@ html {
 
 .postcard-text {
     font-family: 'Inter', sans-serif;
+}
+
+
+/* Interactive Map */
+#interactive-map {
+    width: 100%;
+    height: 500px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Leaflet Popup Styling */
+.leaflet-popup-content-wrapper {
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.leaflet-popup-content {
+    margin: 10px 15px;
+    font-family: 'Inter', sans-serif;
+}
+
+.leaflet-popup-tip {
+    background-color: #fff;
+}
+
+.leaflet-container a {
+    color: #2c3e50;
+    text-decoration: none;
+}
+
+.leaflet-container a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #interactive-map {
+        height: 400px;
+    }
+}
+
+
+
+
+/* Destination Container */
+.destination-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Destination Card */
+.destination-card {
+    background-color: #444;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 300px; /* Increased from 250px */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.destination-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Destination Picture */
+.destination-pic {
+    position: relative;
+    width: 100%;
+    padding-top: 100%; /* Maintains 1:1 aspect ratio */
+    cursor: pointer;
+}
+
+.destination-pic img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensures entire image is visible */
+    background-color: #f8f9fa; /* Fallback background */
+    transition: opacity 0.3s ease;
+}
+
+.destination-pic .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 1 chemise;
+    font-size: 0.9rem;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.destination-pic .overlay p {
+    margin: 0.2rem 0;
+}
+
+.destination-pic:hover img {
+    opacity: 0.3;
+}
+
+.destination-pic:hover .overlay {
+    opacity: 1;
+}
+
+/* Card Text */
+.destination-card h3 {
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .destination-card {
+        width: 100%;
+        max-width: 320px; /* Slightly larger than desktop width for mobile */
+    }
 }

@@ -16,8 +16,8 @@
         <a href="art-culture.php">Art & Culture</a> |
         <a href="games-sports.php">Games & Sports</a> |
         <a href="peace-corner.php">Peace Corner</a> |
-        <a href="about-bd.php">About BD</a>
-        <a href="contact.php">Contact</a>
+        <!-- <a href="about-bd.php">About BD</a> -->
+        <!-- <a href="contact.php">Contact</a> -->
     </nav>
 
 
