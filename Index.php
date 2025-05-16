@@ -39,8 +39,8 @@
                 <!-- <li><a href="about-bd.php" class="text-content hover:text-primary transition duration-300"><i
                             class="fa-solid fa-heart"></i> About BD</a></li> -->
                 <!-- <li><a href="contact.php" class="text-content hover:text-primary transition duration-300"><i
-                            class="fa-solid fa-envelope"></i> Contact</a></li> -->
-            </ul>
+                            class="fa-solid fa-envelope"></i> Contact</a></li>
+            </ul> -->
             <button id="mobile-menu-button" class="md:hidden focus:outline-none text-content hover:text-primary">
                 <i class="fa-solid fa-bars text-2xl"></i>
             </button>
@@ -79,7 +79,7 @@
         </div>
     </section>
 
-
+<!-- map -->
     <section id="destinations" class="py-16 px-6 bg-subtle">
     <div class="container mx-auto">
         <h2 class="text-3xl font-semibold mb-8 text-center text-primary"><i class="fa-solid fa-map-location-dot mr-2"></i>Popular Destinations</h2>

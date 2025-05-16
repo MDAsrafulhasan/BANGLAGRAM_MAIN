@@ -11,10 +11,9 @@ function initializeMap() {
     const mapContainer = document.getElementById('interactive-map');
     if (!mapContainer) return;
 
-    // Initialize the map, centered on Bangladesh
     const map = L.map('interactive-map').setView([23.6850, 90.3563], 7); // Center coordinates and zoom level
 
-    // Add OpenStreetMap tile layer
+
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         maxZoom: 18,

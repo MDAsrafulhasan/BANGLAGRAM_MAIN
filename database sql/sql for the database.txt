@@ -1,0 +1,60 @@
+create database banglagram;
+
+use banglagram;
+
+CREATE TABLE owner (
+  id int primary key,
+  name varchar(20) NOT NULL,
+  s_id varchar(15) NOT NULL,
+  email varchar(30) NOT NULL,
+  image text NOT NULL
+) ;
+
+INSERT INTO owner (id, name, s_id, email, image) VALUES
+(1, 'Md. Asraful Hasan', ' 231902011', 'soumick940@gmail.com', 'https://github.com/MDAsrafulhasan/BanglaGram/blob/main/picture/soumik.jpg?raw=true'),
+(2, 'Tanveer Ahmed Ziad', '231902048', 'tanveer.ziad@gmail.com', 'https://github.com/MDAsrafulhasan/BanglaGram/blob/main/picture/tanveer.jpg?raw=true');
+
+CREATE TABLE slideshow_images (
+  id int NOT NULL auto_increment primary key,
+  src varchar(300) NOT NULL,
+  alt varchar(300) NOT NULL
+) ;
+
+INSERT INTO slideshow_images ( src, alt) VALUES
+( 'https://images.fineartamerica.com/images-medium-large-5/light-and-shadow-photography.jpg', 'Bandorban'),
+('https://images.fineartamerica.com/images-medium-large-5/silent-sea-i-am-shajib-from-bangladesh-who-loves-to-capture-moments.jpg', 'Cox'),
+( 'https://render.fineartamerica.com/images/images-profile-flow/400/images/artworkimages/mediumlarge/2/the-shuknachara-falls-mohammad-saiful-islam.jpg', 'Sylhet'),
+( 'https://i.pinimg.com/736x/3b/90/02/3b90026e4d5a8a1650dbd7dbb932426d.jpg', 'Sylhet'),
+( 'https://i.pinimg.com/736x/1d/48/03/1d480320701ceb04eab7435abc5d33a1.jpg', 'Lama'),
+('https://www.itsholidaysltd.com/_next/image?url=%2Fimages%2Fblog%2F14-most-beautiful-places-in-bangladesh-to-visit-in-this-summer.jpg&w=3840&q=100', 'wow');
+
+INSERT INTO slideshow_images ( src, alt) VALUES
+( 'https://i.pinimg.com/736x/76/1b/c8/761bc82ad5c10e589123cb0310a7a3b9.jpg', 'Banglar gram');
+
+
+
+CREATE TABLE destinations (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    detail TEXT NOT NULL,
+    image VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE art_culture (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    detail TEXT NOT NULL,
+    image VARCHAR(255) NOT NULL,
+    type VARCHAR(50) NOT NULL
+);
+
+
+
+drop table art_culture;
+
+CREATE TABLE games_sports (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    detail TEXT NOT NULL,
+    image VARCHAR(255) NOT NULL
+);
