@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "password";
+$password = "";   //    mysql pass
 $dbname = "banglagram";
 $port = 3306;
 
